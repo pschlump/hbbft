@@ -7,7 +7,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/anthdm/hbbft"
+	"github.com/pschlump/hbbft"
 )
 
 func main() {

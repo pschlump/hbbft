@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/anthdm/hbbft"
+	"github.com/pschlump/hbbft"
 )
 
 const (

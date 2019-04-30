@@ -3,43 +3,93 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:213a8de08bf90cb613ab645093072524c2e4b9c6761ecc43fb70b8cd00e10d51"
   name = "github.com/NebulousLabs/merkletree"
   packages = ["."]
+  pruneopts = "UT"
   revision = "1db44fa75fb1036c6d7be59a5793be4b1fb8a5ab"
 
 [[projects]]
+  branch = "master"
+  digest = "1:af24439a26d27fb513fb702aa629a720c1de83de301357e3aa1845c9e8369638"
+  name = "github.com/anthdm/hbbft"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "659ebcb4ede69d17d9e79dc4a4a503ef489fb8f9"
+
+[[projects]]
+  digest = "1:a2c1d0e43bd3baaa071d1b9ed72c27d78169b2b269f71c105ac4ba34b1be4a39"
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
+  pruneopts = "UT"
   revision = "346938d642f2ec3594ed81d874461961cd0faa76"
   version = "v1.1.0"
 
 [[projects]]
+  digest = "1:4ea0668d490ca32a38366453a486e2e8c60fbdaf1f2607c96b4a093d8a5c8de7"
   name = "github.com/klauspost/cpuid"
   packages = ["."]
+  pruneopts = "UT"
   revision = "ae7887de9fa5d2db4eaa8174a7eff2c1ac00f2da"
   version = "v1.1"
 
 [[projects]]
+  digest = "1:a863aa8e37dcea3224abebd5f92bb38ca985db0599748bd2b36dd26007679dd8"
   name = "github.com/klauspost/reedsolomon"
   packages = ["."]
+  pruneopts = "UT"
   revision = "6bb6130ff6a76a904c1841707d65603aec9cc288"
   version = "v1.6"
 
 [[projects]]
+  digest = "1:31e761d97c76151dde79e9d28964a812c46efc5baee4085b86f68f0c654450de"
+  name = "github.com/konsorten/go-windows-terminal-sequences"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "f55edac94c9bbba5d6182a4be46d86a2c9b5b50e"
+  version = "v1.0.2"
+
+[[projects]]
+  digest = "1:0028cb19b2e4c3112225cd871870f2d9cf49b9b4276531f03438a88e94be86fe"
   name = "github.com/pmezard/go-difflib"
   packages = ["difflib"]
+  pruneopts = "UT"
   revision = "792786c7400a136282c1664665ae0a8db921c6c2"
   version = "v1.0.0"
 
 [[projects]]
+  digest = "1:fd61cf4ae1953d55df708acb6b91492d538f49c305b364a014049914495db426"
+  name = "github.com/sirupsen/logrus"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "8bdbc7bcc01dcbb8ec23dc8a28e332258d25251f"
+  version = "v1.4.1"
+
+[[projects]]
+  digest = "1:f85e109eda8f6080877185d1c39e98dd8795e1780c08beca28304b87fd855a1c"
   name = "github.com/stretchr/testify"
   packages = ["assert"]
+  pruneopts = "UT"
   revision = "12b6f73e6084dad08a7c6e575284b177ecafbc71"
   version = "v1.2.1"
+
+[[projects]]
+  branch = "master"
+  digest = "1:dcd2e9de31e20e01b156288ce4fc239498564295bdbb59d8aaf591af94778162"
+  name = "golang.org/x/sys"
+  packages = ["unix"]
+  pruneopts = "UT"
+  revision = "d89cdac9e8725f2aefce25fcbfef41134c9ad412"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "c7ccc0fa8beab06a021f9a8163c140efe84fbf406dccf7ff02420acec908c62c"
+  input-imports = [
+    "github.com/NebulousLabs/merkletree",
+    "github.com/anthdm/hbbft",
+    "github.com/klauspost/reedsolomon",
+    "github.com/sirupsen/logrus",
+    "github.com/stretchr/testify/assert",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
