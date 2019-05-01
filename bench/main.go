@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/binary"
 	"encoding/gob"
+	"fmt"
 	"log"
 	"math/rand"
 	"time"
@@ -28,6 +29,8 @@ func benchmark(n, txsize, batchSize int) {
 		nodes    = makeNodes(n, 10000, txsize, batchSize)
 		messages = make(chan message, 1024*1024)
 	)
+
+	log.Printf("about to start (%d) nodes\n", n)
 	for _, node := range nodes {
 		if err := node.Start(); err != nil {
 			log.Fatal(err)
@@ -37,11 +40,15 @@ func benchmark(n, txsize, batchSize int) {
 		}
 	}
 
+	log.Printf("running test with (%d) nodes\n", n)
 	timer := time.After(5 * time.Second)
+	nSeconds := 1
+	timer = time.After(time.Duration(nSeconds) * time.Second)
 running:
 	for {
 		select {
 		case messag := <-messages:
+			fmt.Printf(".")
 			node := nodes[messag.payload.To]
 			hbmsg := messag.payload.Payload.(hbbft.HBMessage)
 			if err := node.HandleMessage(messag.from, hbmsg.Epoch, hbmsg.Payload.(*hbbft.ACSMessage)); err != nil {
@@ -51,16 +58,19 @@ running:
 				messages <- message{node.ID, msg}
 			}
 		case <-timer:
+			fmt.Printf("x")
 			for _, node := range nodes {
+				fmt.Printf("X")
 				total := 0
 				for _, txx := range node.Outputs() {
 					total += len(txx)
 				}
-				log.Printf("node (%d) processed a total of (%d) transactions in 5 seconds [ %d tx/s ]",
-					node.ID, total, total/5)
+				log.Printf("\n\nnode (%d) processed a total of (%d) transactions in %d seconds [ %d tx/s ]",
+					node.ID, total, nSeconds, total/nSeconds)
 			}
 			break running
 		default:
+			fmt.Printf("!")
 		}
 	}
 }
